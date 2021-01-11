@@ -1,5 +1,12 @@
-import React from 'react'
 import { Bar } from 'react-chartjs-2';
+
+
+/*
+
+In this component, the number of each programming language contained in each repository
+of a user in github will be shown in a bar graph with the help of the chart.js module in react
+
+*/
 
 export default function Plot2() {
     const state = {
@@ -23,7 +30,7 @@ export default function Plot2() {
                     title: {
                         display: true,
                         text: 'Average Rainfall per month',
-                        fontSize: 100
+                        fontSize: 15
                     },
                     legend: {
                         display: true,
