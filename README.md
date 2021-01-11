@@ -8,3 +8,7 @@
 
 ### how am i doing for now ... 😀
 <a href="https://ibb.co/4gmcH40"><img src="https://i.ibb.co/TqvZsPN/Captura-de-pantalla-de-2021-01-11-01-05-39.png" alt="Captura-de-pantalla-de-2021-01-11-01-05-39" border="0"></a>
+
+-------------------------------------------------
+
+##### And finally, I just want to add that being able to learn the basics of React in less than two days has been an enriching experience for me, it has been a very good challenge. 🤩
