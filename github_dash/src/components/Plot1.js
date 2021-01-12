@@ -49,7 +49,7 @@ export default function Plots({ repos, followers, following, gists }) {
                 options={{
                     title: {
                         display: true,
-                        text: 'Information Public',
+                        text: 'Public Information',
                         fontSize: 20,
                         fontColor: "white"
 
