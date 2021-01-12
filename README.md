@@ -38,7 +38,7 @@ This Dashboard works as follows:
 
 ------------
 
-<a href="https://ibb.co/ByvqSKf"><img src="https://i.ibb.co/zXCG0Hm/Captura-de-pantalla-de-2021-01-11-19-30-45.png" alt="Captura-de-pantalla-de-2021-01-11-19-30-45" border="0"></a>
+<a href="https://ibb.co/sWM6T4f"><img src="https://i.ibb.co/Z2kYQrj/Captura-de-pantalla-de-2021-01-11-21-34-22.png" alt="Captura-de-pantalla-de-2021-01-11-21-34-22" border="0"></a>
 
 ------------
 
