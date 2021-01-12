@@ -2,6 +2,7 @@ import React from 'react'
 import HeaderDiv from "./header"
 import Plot1 from "./Plot1"
 import Plot2 from "./Plot2"
+import Plot3 from "./Plot3"
 
 /*
 
@@ -17,26 +18,28 @@ and also I added some styles inline to some divs
 
 */
 
-export default function Dash({ name, followers, following, repos, avatar, username, location, type }) {
+export default function Dash({ issues, noissues, keyss, values, gists, name, followers, following, repos, avatar, username, location, type }) {
     return (
         <div>
             <div style={{ paddingLeft: "55px", paddingBottom: "90px", textAlign: "center" }} className="col">
                 <div className="col-8">
                     <div className="container p-3 my-3 bg-dark text-white">
-                        <h1 style={{ textAlign: "center" }}>Welcome {name}!</h1>
+                        <h1 style={{ justifyContent: "flex-start" }}>Welcome <b>{name}</b></h1>
                     </div>
                 </div>
             </div>
-            <HeaderDiv type={type} location={location} followers={followers} following={following} repos={repos} avatar={avatar} />
+            <HeaderDiv gists={gists} type={type} location={location} followers={followers} following={following} repos={repos} avatar={avatar} />
             <br></br>
             <div style={{ backgroundColor: "#41484D" }} className="container p-3 my-3 border">
                 <div className="row">
                     <div className="col">
-                        <Plot1 username={username} repos={repos} followers={followers} following={following} ></Plot1>
+                        <Plot3 issues={issues} noissues={noissues}></Plot3>
                     </div>
                     <div className="col">
-                        <Plot2></Plot2>
+                        <Plot1 username={username} repos={repos} followers={followers} following={following} ></Plot1>
                     </div>
+                    <br></br>
+                    <div className="w-100"><Plot2 keyss={keyss} values={values} ></Plot2></div>
                 </div>
             </div>
         </div>
