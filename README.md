@@ -38,11 +38,12 @@ This Dashboard works as follows:
 **As a last step**, you can follow the following steps to run this code and view the dashboard on your machine locally:
 
 - Git clone this repository
-    **git clone {link this repo}**
+     **git clone {link this repo}**
 
 - second move to the repository and inside the folder of this project execute:
-   **npm install** (to install the packages of node.js)
-   **npm run-script start**
+  
+      **npm install** (to install the packages of node.js)
+      **npm run-script start**
 
 If the **previous steps were successful** on your screen the dashboard will show on your localhost on port 3000!
 
