@@ -15,7 +15,7 @@ The maximum number of **requests allowed from this API** without authenticating 
 
 ------------
 
-The following **packages were installed **in the project :
+The following **packages were installed** in the project :
 
 | semantic-react pack   | bootstrap-react pack   |
 | ------------ | ------------ |
