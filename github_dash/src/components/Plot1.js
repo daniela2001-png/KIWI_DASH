@@ -8,6 +8,7 @@ In this visualization component I show the graph corresponding to the basic data
 
 
 On the other hand, the data plotted in this graph is the props passed as a parameter, which are:
+
 1) The number of followers of a user
 2) The number of people who follow the searched user
 3) The number of gists the user has
