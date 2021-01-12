@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Dash from "./dash"
 
 /*
+
 This file is the "main file" and your content is:
 
 1) the first thing that I do is init the variables to use in the program with the help of useState()
@@ -39,20 +40,23 @@ function App() {
   const [InputUser, setInput] = useState()
   const [avatar, setavatar] = useState()
   const [type, settype] = useState()
+  const [keyss, setkeys] = useState(["C", "Python", "JavaScript", "shell", "Arduino"]);
+  const [values, setvalues] = useState([20, 10, 9, 8, 15])
+  const [issues, setissues] = useState(40)
+  const [noissues, setnoissues] = useState(100)
+
 
 
   // get the data of the api
   useEffect(() => {
     const api_url = "https://api.github.com/users"
-    fetch(`${api_url}/daniela2001-png`, { headers: { Authorization: "f7e331706e2527a7616bb688cffffbdd220a4651" } })
+    fetch(`${api_url}/daniela2001-png`, { headers: { Authorization: "3b565683a3e0cf03b13d92d039d52817085f965e" } })
       .then(resp => resp.json())
-      .then(data => { SetData(data); console.log(data) })
+      .then(data => { SetData(data) })
   }, [])
 
-
-
   // here login is equal to the username of github
-  const SetData = ({ name, login, following, followers, public_repos, location, avatar_url, type }) => {
+  const SetData = ({ name, login, following, followers, public_gists, public_repos, location, avatar_url, type }) => {
     setname(name)
     setUsername(login)
     setfollowers(followers)
@@ -61,17 +65,17 @@ function App() {
     setlocation(location)
     setavatar(avatar_url)
     settype(type)
+    setgists(public_gists)
   }
 
   // Here create a arrow function that sets the target value of the input user 
   const handleSearch = (e) => {
     setInput(e.target.value)
   }
-
   // Here sumbit the data that get of the result of the var InputUser
   const handleSubmit = () => {
     const api_url2 = `https://api.github.com/users/${InputUser}`
-    fetch(`${api_url2}`, { headers: { Authorization: "f7e331706e2527a7616bb688cffffbdd220a4651" } })
+    fetch(`${api_url2}`, { headers: { Authorization: "3b565683a3e0cf03b13d92d039d52817085f965e" } })
       .then(resp => resp.json())
       .then(data => {
         if (data.message) {
@@ -79,23 +83,39 @@ function App() {
         }
         else {
           SetData(data)
-          setError(null)
+          setError(null) // set the error to null so that it does not show again
         }
       })
 
-    fetch(`https://api.github.com/users/${InputUser}/repos`, { headers: { Authorization: "f7e331706e2527a7616bb688cffffbdd220a4651" } })
+    let objetos = {}
+    let my_keys = []
+    let my_values = []
+    // objetos solo existe dentro de este fecth con la data que necesito pero si intento imprimirlo afure no existe o esta vacio
+    fetch(`https://api.github.com/users/${InputUser}/repos`, { headers: { Authorization: "3b565683a3e0cf03b13d92d039d52817085f965e" } })
       .then(resp => resp.json())
       .then(data => {
         let data_fix = []
+        let counter = 0;
+        let counter_false = 0;
         for (let i = 0; i <= data.length - 1; i++) {
           if (data[i].language !== null) {
             data_fix.push(data[i].language)
           }
-          console.log(data_fix)
+          if (data[i].has_issues === true) {
+            counter += 1;
+          }
+          if (data[i].has_issues === false) {
+            counter_false += 1
+          }
         }
+        const SetRepos = (my_keys, my_values, counter, counter_false) => {
+          setkeys(my_keys)
+          setvalues(my_values)
+          setissues(counter)
+          setnoissues(counter_false)
+        }
+
         let set = new Set(data_fix);
-        console.log(set)
-        let objetos = {}
         let counter1 = 0;
         set.forEach((item) => {
           counter1 = 0;
@@ -105,10 +125,14 @@ function App() {
               objetos[item] = counter1;
             }
           })
+          my_keys = Object.keys(objetos)
+          my_values = Object.values(objetos)
         })
-        console.log(objetos)
+        // Here save the data of the repos into arrays using States
+        SetRepos(my_keys, my_values, counter, counter_false)
       })
   }
+
   return (
     <>
       <div className="App">
@@ -119,13 +143,15 @@ function App() {
           </figure>
           <br></br>
           <div>
+            <div></div>
             <Form onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Input onChange={handleSearch} maxLength="20" className="input-hi" icon={<Form.Button icon={<Icon name='search' inverted circular link />} content="Search ..." />} />
+                <Form.Input onChange={handleSearch} maxLength="20" className="input-hi" icon={<Form.Button icon={<Icon name='search' inverted circular link />} content="Search" />} />
               </Form.Group>
             </Form>
             <br></br>
-            {error ? (<h1 style={{ textAlign: "center" }}>{error}</h1>) : (<Dash type={type} location={location} username={username} repos={repos} name={name} followers={followers} following={following} avatar={avatar} ></Dash>)}
+            {error ? (<h1 style={{ textAlign: "center" }}>{error}</h1>) :
+              (<Dash issues={issues} noissues={noissues} keyss={keyss} values={values} gists={gists} type={type} location={location} username={username} repos={repos} name={name} followers={followers} following={following} avatar={avatar} ></Dash>)}
           </div>
           <br></br>
         </header>
