@@ -47,7 +47,7 @@ This Dashboard works as follows:
 ------------
 
 
-#**Author: <a href="https://github.com/daniela2001-png">Daniela Morales</a>**
+# Author: <a href="https://github.com/daniela2001-png">Daniela Morales</a>
 
 ------------
 
